@@ -1,0 +1,11 @@
+{
+  "program": "Shaders/unlit/rr.prog",
+  "cubemap": "Textures/skyBox/",
+  "cubemap_extension": ".jpg",
+  "color": [
+    1,
+    1,
+    1
+  ],
+  "shininess": 256
+}
