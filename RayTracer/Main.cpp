@@ -39,16 +39,21 @@ int main(int, char**)
             }
         }
 
-        canvas.Clear( { 0, 0, 0, 1} );
 
-        for (int i = 0; i < 1000; i++)
-        {
-            canvas.DrawPoint({ random(0, 1000), random(0, 600)}, {1, 1, 1, 1});
-        }
+        // For Static Use This Code
+        //canvas.Clear( { 0, 0, 0, 1} );
+
+        //for (int i = 0; i < 1000; i++)
+        //{
+        //    canvas.DrawPoint({ random(0, 1000), random(0, 600)}, {1, 1, 1, 1});
+        //}
 
         canvas.Update();
 
         renderer.CopyCanvas(canvas);
+
+        renderer.Render(canvas); // Creates Color Gradient
+
         renderer.Present();
     }
 
