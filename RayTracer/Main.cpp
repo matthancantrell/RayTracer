@@ -2,6 +2,7 @@
 #include "Renderer/Renderer.h"
 #include "Renderer/Canvas.h"
 #include "Objects/Sphere.h"
+#include "Objects/Scene.h"
 
 int main(int, char**)
 {
@@ -13,8 +14,10 @@ int main(int, char**)
     renderer.CreateWindow(1000, 500);
 
     Canvas canvas(1000, 500, renderer);
+    Scene scene;
 
-    auto sphere = std::make_unique<Sphere>(glm::vec3{ 0, 0, 1 }, 0.5f, nullptr);
+    scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0, 0, -1 }, 0.5f, std::make_unique<Lambertian>(color3{ 0, 1, 0 })));
+    scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0, -100.5, -1 }, 100.0f, std::make_unique<Lambertian>(color3{ 0.2f, 0.2f, 0.2f })));
 
     bool quit = false;
     while (!quit)
@@ -44,14 +47,14 @@ int main(int, char**)
 
 
         // For Static Use This Code
-        canvas.Clear( { 0, 0, 0, 1} );
+       canvas.Clear( { 0, 0, 0, 1} );
 
         //for (int i = 0; i < 1000; i++)
         //{
         //    canvas.DrawPoint({ random(0, 1000), random(0, 600)}, {1, 1, 1, 1});
         //}
 
-        renderer.Render(canvas, sphere.get());
+        renderer.Render(canvas, scene);
 
         canvas.Update();
 

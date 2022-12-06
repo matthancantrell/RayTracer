@@ -1,8 +1,10 @@
 #pragma once
 #include "Canvas.h"
 #include "../Math/Ray.h"
-#include "../Objects/Object.h"
 #include<SDL.h>
+
+class Object;
+class Scene;
 
 class Renderer
 {
@@ -12,7 +14,7 @@ public:
 	void Shutdown();
 	bool CreateWindow(int width,int height);
 
-	void Render(Canvas& canvas, Object* object);
+	void Render(Canvas& canvas, Scene& object);
 
 	void CopyCanvas(const Canvas& canvas);
 	void Present();
