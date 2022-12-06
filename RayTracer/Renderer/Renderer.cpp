@@ -43,7 +43,7 @@ void Renderer::Present()
 	SDL_RenderPresent(m_renderer);
 }
 
-void Renderer::Render(Canvas& canvas)
+void Renderer::Render(Canvas& canvas, Object* object)
 {
 	// camera / viewport 
 	glm::vec3 lowerLeft{ -2, -1, -1 };
@@ -63,8 +63,17 @@ void Renderer::Render(Canvas& canvas)
 			glm::vec3 direction = lowerLeft + (u * right) + (v * up);
 			Ray ray{ eye, direction };
 
-			// get gradient background color from ray 
-			color3 color = GetBackgroundFromRay(ray);
+			RaycastHit raycastHit;
+			color3 color;
+			if (object->Hit(ray, 0.01f, 100.0f, raycastHit))
+			{
+				color = { 1, 0, 0};
+			}
+			else
+			{
+				// get gradient background color from ray 
+				color = GetBackgroundFromRay(ray);
+			}
 			canvas.DrawPoint({ x, y }, color4(color, 1));
 		}
 	}
