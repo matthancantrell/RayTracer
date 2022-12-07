@@ -56,7 +56,7 @@ int main(int, char**)
         //    canvas.DrawPoint({ random(0, 1000), random(0, 600)}, {1, 1, 1, 1});
         //}
 
-        renderer.Render(canvas, scene, camera);
+        renderer.Render(canvas, scene, camera, 100);
 
         canvas.Update();
 
