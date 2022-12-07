@@ -3,6 +3,7 @@
 #include "Renderer/Canvas.h"
 #include "Objects/Sphere.h"
 #include "Objects/Scene.h"
+#include "Renderer/Camera.h"
 
 int main(int, char**)
 {
@@ -14,6 +15,7 @@ int main(int, char**)
     renderer.CreateWindow(1000, 500);
 
     Canvas canvas(1000, 500, renderer);
+    Camera camera({ 0, 1, 2 }, { 0, 0, 0 }, { 0, 1, 0 }, 70.0f, 1000 / (float)500);
     Scene scene;
 
     scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0, 0, -1 }, 0.5f, std::make_unique<Lambertian>(color3{ 0, 1, 0 })));
@@ -54,7 +56,7 @@ int main(int, char**)
         //    canvas.DrawPoint({ random(0, 1000), random(0, 600)}, {1, 1, 1, 1});
         //}
 
-        renderer.Render(canvas, scene);
+        renderer.Render(canvas, scene, camera);
 
         canvas.Update();
 

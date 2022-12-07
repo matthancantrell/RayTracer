@@ -5,6 +5,7 @@
 
 class Object;
 class Scene;
+class Camera;
 
 class Renderer
 {
@@ -14,7 +15,7 @@ public:
 	void Shutdown();
 	bool CreateWindow(int width,int height);
 
-	void Render(Canvas& canvas, Scene& object);
+	void Render(Canvas& canvas, Scene& scene, Camera& camera);
 
 	void CopyCanvas(const Canvas& canvas);
 	void Present();

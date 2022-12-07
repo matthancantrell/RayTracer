@@ -1,2 +1,6 @@
 ﻿  Main.cpp
+  Camera.cpp
+  Canvas.cpp
+  Renderer.cpp
+  Generating Code...
   RayTracer.vcxproj -> C:\Users\mcantrell\OneDrive\Second Year\Q1\Quarter Long\Ray-Tracer\x64\Debug\RayTracer.exe
