@@ -1,4 +1,0 @@
-	{
-		"vertex_shader": "shaders/unlit/refraction.vert",
-		"fragment_shader": "shaders/unlit/refraction.frag"
-	}

@@ -70,7 +70,7 @@ void Renderer::Render(Canvas& canvas, Scene& scene, Camera& camera, int samples)
 				// add trace color value to color 
 				color += scene.Trace(ray, 0.001f, 1000.0f, raycastHit, 5);
 			}
-			color /= samples;
+			color /= (float)samples;
 			canvas.DrawPoint({ x, y }, color4(color, 1));
 		}
 	}

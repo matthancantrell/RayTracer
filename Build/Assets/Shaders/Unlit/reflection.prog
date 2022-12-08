@@ -1,4 +1,0 @@
-	{
-		"vertex_shader": "shaders/unlit/reflection.vert",
-		"fragment_shader": "shaders/unlit/reflection.frag"
-	}

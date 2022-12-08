@@ -9,16 +9,21 @@ int main(int, char**)
 {
     std::cout << "Hello World!\n";
 
+    const int width = 1000;
+    const int height = 500;
+    const int samples = 100;
+
     Renderer renderer;
 
     renderer.Initialize();
-    renderer.CreateWindow(1000, 500);
+    renderer.CreateWindow(width, height);
 
-    Canvas canvas(1000, 500, renderer);
-    Camera camera({ 0, 1, 2 }, { 0, 0, 0 }, { 0, 1, 0 }, 70.0f, 1000 / (float)500);
+    Canvas canvas(width, height, renderer);
+    Camera camera({ 0, 1, 2 }, { 0, 0, 0 }, { 0, 1, 0 }, 70.0f, width / (float)height);
     Scene scene;
 
     scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0, 0, -1 }, 0.5f, std::make_unique<Lambertian>(color3{ 0, 1, 0 })));
+    scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 1, 0, -1 }, 0.5f, std::make_unique<Metal>(color3{ 1, 1, 1 }, 0.1f)));
     scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0, -100.5, -1 }, 100.0f, std::make_unique<Lambertian>(color3{ 0.2f, 0.2f, 0.2f })));
 
     bool quit = false;
@@ -56,7 +61,7 @@ int main(int, char**)
         //    canvas.DrawPoint({ random(0, 1000), random(0, 600)}, {1, 1, 1, 1});
         //}
 
-        renderer.Render(canvas, scene, camera, 100);
+        renderer.Render(canvas, scene, camera, samples);
 
         canvas.Update();
 
