@@ -16,7 +16,6 @@ public:
     void AddObject(std::unique_ptr<Object> object);
 
 private:
-
     std::vector <std::unique_ptr<Object>> m_objects;
 
 };
